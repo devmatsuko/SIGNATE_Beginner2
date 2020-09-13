@@ -90,9 +90,9 @@ test_x = data[len(train_x):].reset_index(drop=True)
 
 # 年代（Generaiton）の削除
 train_x = train_x.drop(
-    ['Generation', 'Age'], axis=1)
+    ['Generation', 'Age', 'Gender'], axis=1)
 test_x = test_x.drop(
-    ['Generation', 'Age'], axis=1)
+    ['Generation', 'Age', 'Gender'], axis=1)
 
 
 # クロスバリデーション
