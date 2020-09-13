@@ -16,6 +16,7 @@ train = pd.read_csv('../data/train.csv')
 
 # 目的変数の分離(x:目的変数以外、y:目的変数)
 train_x = train.drop(['disease'], axis=1)
+# train_x = train.copy()
 train_y = train['disease']
 
 # テストデータのバックアップ
@@ -84,9 +85,14 @@ for c in ['Gender']:
 train_x = data[:len(train_x)]
 test_x = data[len(train_x):].reset_index(drop=True)
 
+# profile = pdp.ProfileReport(traiｎ_x)
+# profile.to_file(output_file="../health.html")
+
 # 年代（Generaiton）の削除
-train_x = train_x.drop(['Generation'], axis=1)
-test_x = test_x.drop(['Generation'], axis=1)
+train_x = train_x.drop(
+    ['Generation', 'Age'], axis=1)
+test_x = test_x.drop(
+    ['Generation', 'Age'], axis=1)
 
 
 # クロスバリデーション
@@ -135,7 +141,7 @@ print(scores)
 # pred = model.predict(dtest)
 # pred = np.wehre(va_pred_temp/4 > 0.5, 1, 0)
 pred = va_pred_temp/4
-print(pred)
+# print(pred)
 
 # CSV出力
 sub = pd.DataFrame(index=test.index, columns=['disease'])
