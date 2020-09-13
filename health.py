@@ -69,7 +69,7 @@ for idx in data.index:
 for idx in data.index:
     data_norm_gend['AST_GOT_norm_gend'][idx] = (data['AST_GOT'][idx] - data.groupby('Gender').mean(
     )['AST_GOT'][data['Gender'][idx]])/data.groupby('Gender').var()['AST_GOT'][data['Gender'][idx]]
-data = pd.concat([data, data_norm_gene], axis=1)
+# data = pd.concat([data, data_norm_gene], axis=1)
 # data = pd.concat([data, data_norm_gend], axis=1)
 
 # print(data.head(10))
